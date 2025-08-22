@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BAEUDA — Bahasa dan Edukasi Digital Anak Muda</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="BAEUDA: website belajar interaktif untuk Gen Z & Gen Alpha dengan gamifikasi, tantangan, dan konten singkat.">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>BAEUDA</h1>
+      </div>
+      <nav class="navlinks">
+        <a href="index.html" class="hide-m">Home</a>
+        <a href="#fitur" class="hide-m">Fitur</a>
+        <a href="#leaderboard" class="hide-m">Leaderboard</a>
+        <a class="btn ghost" href="login.html">Log In</a>
+        <a class="btn brand" href="register.html">Daftar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container hero">
+    <section class="grid2">
+      <div>
+        <span class="kicker">Bahasa dan Edukasi Digital Anak Muda</span>
+        <h2 class="title">Belajar seru untuk <b>Gen Z & Gen Alpha</b>.</h2>
+        <p class="subtitle">
+          Konten pendek, game edukasi, misi harian, dan leaderboard. BAEUDA bikin belajar
+          jadi menyenangkan, bukan membosankan.
+        </p>
+        <div class="cta">
+          <a class="btn brand" href="register.html">Mulai Gratis</a>
+          <a class="btn" href="login.html">Saya sudah punya akun</a>
+        </div>
+        <p class="help">Tidak perlu kartu – cukup email sekolah atau pribadi.</p>
+      </div>
+      <div class="card">
+        <div class="badge">Cuplikan</div>
+        <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop"
+             alt="Ilustrasi siswa belajar dengan perangkat" />
+      </div>
+    </section>
+
+    <section id="fitur" class="features">
+      <div class="grid4">
+        <article class="card feature">
+          <div class="badge">Fitur</div>
+          <h3>Gamifikasi Penuh</h3>
+          <p>Poin, level, badge, dan tantangan mingguan biar makin semangat.</p>
+        </article>
+        <article class="card feature">
+          <div class="badge">Fitur</div>
+          <h3>Konten Singkat</h3>
+          <p>Pelajaran 2–3 menit ala reels/TikTok, mudah dicerna dan langsung praktik.</p>
+        </article>
+        <article class="card feature">
+          <div class="badge">Fitur</div>
+          <h3>Belajar Bareng</h3>
+          <p>Room belajar live untuk diskusi cepat, kuis, dan review bareng teman.</p>
+        </article>
+        <article class="card feature">
+          <div class="badge">Fitur</div>
+          <h3>AI Helper</h3>
+          <p>Asisten belajar yang menjawab pertanyaan dan kasih contoh relevan.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="leaderboard" class="leaderboard">
+      <div class="card">
+        <div class="badge">Leaderboard Mingguan (contoh)</div>
+        <table class="table" role="table" aria-label="Leaderboard">
+          <tbody>
+            <tr>
+              <td class="rank">#1</td>
+              <td class="name"><span>🟣</span> Owen</td>
+              <td>Matematika — 1.240 XP</td>
+            </tr>
+            <tr>
+              <td class="rank">#2</td>
+              <td class="name"><span>🔵</span> Bot 1</td>
+              <td>Bahasa Inggris — 1.120 XP</td>
+            </tr>
+            <tr>
+              <td class="rank">#3</td>
+              <td class="name"><span>🟢</span> Bot 2</td>
+              <td>IPA — 980 XP</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="actions">
+          <a class="btn brand" href="register.html">Ikut Tantangan</a>
+          <a class="btn" href="login.html">Lihat kelas saya</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="y"></span> BAEUDA — Bahasa dan Edukasi Digital Anak Muda</div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
