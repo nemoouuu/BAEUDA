@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Daftar — BAEUDA</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Daftar akun BAEUDA untuk mulai belajar interaktif.">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>BAEUDA</h1>
+      </div>
+      <nav class="navlinks">
+        <a href="index.html" class="hide-m">Home</a>
+        <a class="btn" href="login.html">Log In</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="card form-wrap" role="form" aria-labelledby="title">
+      <h2 id="title" class="form-title">Daftar</h2>
+      <p class="form-sub">Buat akun dan mulai kumpulkan XP pertamamu 🚀</p>
+
+      <form id="register-form" action="#" method="post" onsubmit="alert('Demo saja. Tambahkan endpoint backend untuk produksi.'); return false;">
+        <label for="name">Nama Lengkap</label>
+        <input class="input" type="text" id="name" name="name" placeholder="Aurel K." required />
+
+        <label for="email">Email</label>
+        <input class="input" type="email" id="email" name="email" placeholder="nama@sekolah.id" required autocomplete="email" />
+
+        <div class="input-row">
+          <label for="password">Kata Sandi</label>
+          <input class="input" type="password" id="password" name="password" placeholder="Minimal 8 karakter" required minlength="8" autocomplete="new-password" />
+          <button type="button" class="toggle-eye" data-toggle="password" data-target="password" aria-label="Tampilkan/Sembunyikan kata sandi">Show</button>
+        </div>
+
+        <div class="meter" id="pwd-meter" aria-hidden="true"><span style="width:0%"></span></div>
+        <p class="note">Gunakan kombinasi huruf besar, kecil, angka, dan simbol.</p>
+
+        <label for="confirm">Konfirmasi Kata Sandi</label>
+        <input class="input" type="password" id="confirm" name="confirm" placeholder="Ulangi kata sandi" required autocomplete="new-password" />
+
+        <label class="note"><input type="checkbox" required /> Saya menyetujui Syarat & Kebijakan Privasi</label>
+
+        <button class="btn brand full" type="submit">Buat Akun</button>
+        <div class="divider"><span>atau</span></div>
+        <a class="btn full" href="login.html">Saya sudah punya akun</a>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="y"></span> BAEUDA</div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
