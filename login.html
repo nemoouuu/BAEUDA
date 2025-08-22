@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Log In — BAEUDA</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Masuk ke BAEUDA untuk melanjutkan belajar seru.">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>BAEUDA</h1>
+      </div>
+      <nav class="navlinks">
+        <a href="index.html" class="hide-m">Home</a>
+        <a class="btn brand" href="register.html">Daftar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="card form-wrap" role="form" aria-labelledby="title">
+      <h2 id="title" class="form-title">Masuk</h2>
+      <p class="form-sub">Selamat datang kembali! Lanjutkan progres belajarmu.</p>
+
+      <form action="#" method="post" onsubmit="alert('Demo saja. Tambahkan endpoint backend untuk produksi.'); return false;">
+        <label for="email">Email atau Username</label>
+        <input class="input" type="text" id="email" name="email" placeholder="nama@sekolah.id" required autocomplete="username" />
+
+        <div class="input-row">
+          <label for="password-login">Kata Sandi</label>
+          <input class="input" type="password" id="password-login" name="password" placeholder="••••••••" required autocomplete="current-password" minlength="6" />
+          <button type="button" class="toggle-eye" data-toggle="password" data-target="password-login" aria-label="Tampilkan/Sembunyikan kata sandi">Show</button>
+        </div>
+
+        <div class="actions">
+          <label class="note"><input type="checkbox" /> Ingat saya</label>
+          <a class="note" href="#">Lupa kata sandi?</a>
+        </div>
+
+        <button class="btn brand full" type="submit">Masuk</button>
+        <div class="divider"><span>atau</span></div>
+        <a class="btn full" href="register.html">Buat akun baru</a>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="y"></span> BAEUDA</div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
