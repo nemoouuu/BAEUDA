@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiz Fisika — BAEUDA</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <img src="logo.png" alt="Logo BAEUDA" class="logo" />
+        <h1>BAEUDA</h1>
+      </div>
+      <nav class="navlinks">
+        <a href="index.html" class="btn ghost">Home</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container" style="max-width:700px;margin:40px auto;">
+    <div class="card" style="padding:2em;">
+      <div class="badge">Game Fisika (Quiz)</div>
+      <h3 style="margin-bottom:1.5em;">⚡ Quiz Fisika — 10 Soal</h3>
+      <div id="quiz-area">
+        <div id="quiz-question" style="font-size:1.2em;font-weight:500;margin-bottom:1em;"></div>
+        <div id="quiz-options"></div>
+        <div id="quiz-feedback" style="margin-top:1em;color:var(--muted);min-height:2em;"></div>
+        <button class="btn brand" id="quiz-next" style="display:none;margin-top:1.5em;">Soal Berikutnya</button>
+        <div id="quiz-score" style="margin-top:1.5em;font-weight:bold;"></div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container">© <span id="y"></span> BAEUDA</div>
+  </footer>
+  <script>
+    const quizQuestions = [
+      {q:"Apa satuan SI untuk gaya?",options:["Newton","Joule","Watt","Pascal"],answer:0,explain:"Satuan SI untuk gaya adalah Newton (N)."},
+      {q:"Hukum Newton ke-2 berbunyi...",options:["Setiap aksi ada reaksi yang sama dan berlawanan","Gaya = massa x percepatan","Benda diam akan tetap diam","Energi tidak dapat diciptakan atau dimusnahkan"],answer:1,explain:"Hukum Newton ke-2: F = m × a (gaya = massa × percepatan)."},
+      {q:"Alat untuk mengukur arus listrik adalah...",options:["Voltmeter","Amperemeter","Ohmmeter","Barometer"],answer:1,explain:"Amperemeter digunakan untuk mengukur arus listrik."},
+      {q:"Berapakah percepatan gravitasi di permukaan bumi?",options:["9,8 m/s²","10 m/s²","8,9 m/s²","1 m/s²"],answer:0,explain:"Percepatan gravitasi di bumi adalah sekitar 9,8 m/s²."},
+      {q:"Energi kinetik rumusnya adalah...",options:["m × g × h","½ × m × v²","m × a","F × s"],answer:1,explain:"Energi kinetik: ½ × massa × kecepatan² (½mv²)."},
+      {q:"Cahaya merambat paling cepat di...",options:["Udara","Air","Vakum","Kaca"],answer:2,explain:"Cahaya merambat paling cepat di vakum."},
+      {q:"Hukum Archimedes berkaitan dengan...",options:["Gaya gesek","Tekanan udara","Gaya apung","Energi potensial"],answer:2,explain:"Hukum Archimedes membahas gaya apung pada benda di cairan."},
+      {q:"Satuan SI untuk energi adalah...",options:["Joule","Watt","Newton","Kelvin"],answer:0,explain:"Satuan SI untuk energi adalah Joule (J)."},
+      {q:"Benda dikatakan bergerak jika...",options:["Posisinya berubah terhadap titik acuan","Massanya berubah","Warnanya berubah","Bentuknya berubah"],answer:0,explain:"Gerak: perubahan posisi terhadap titik acuan."},
+      {q:"Alat untuk mengukur suhu adalah...",options:["Barometer","Termometer","Higrometer","Manometer"],answer:1,explain:"Termometer digunakan untuk mengukur suhu."}
+    ];
+    let quizIndex = 0;
+    let quizScore = 0;
+
+    function showQuizQuestion() {
+      const q = quizQuestions[quizIndex];
+      document.getElementById('quiz-question').innerHTML = `<b>Soal ${quizIndex+1}:</b> ${q.q}`;
+      const opts = q.options.map((opt, i) =>
+        `<button class="btn full" style="margin:.3em 0;width:100%;text-align:left;" onclick="checkQuizAnswer(${i})">${opt}</button>`
+      ).join("");
+      document.getElementById('quiz-options').innerHTML = opts;
+      document.getElementById('quiz-feedback').textContent = '';
+      document.getElementById('quiz-next').style.display = 'none';
+      document.getElementById('quiz-score').textContent = `Soal ke-${quizIndex+1} dari ${quizQuestions.length}`;
+    }
+
+    window.checkQuizAnswer = function(selected) {
+      const q = quizQuestions[quizIndex];
+      if (selected === q.answer) {
+        document.getElementById('quiz-feedback').innerHTML = "<span style='color:var(--ok)'>Benar! 🎉</span>";
+        quizScore++;
+      } else {
+        document.getElementById('quiz-feedback').innerHTML =
+          `<span style='color:var(--danger)'>Salah!</span> <br>Jawaban benar: <b>${q.options[q.answer]}</b><br><i>${q.explain}</i>`;
+      }
+      document.getElementById('quiz-options').innerHTML = '';
+      document.getElementById('quiz-next').style.display = 'inline-block';
+      document.getElementById('quiz-score').textContent = `Skor: ${quizScore} / ${quizQuestions.length}`;
+    };
+
+    document.getElementById('quiz-next').onclick = function() {
+      quizIndex++;
+      if (quizIndex < quizQuestions.length) {
+        showQuizQuestion();
+      } else {
+        document.getElementById('quiz-area').innerHTML =
+          `<h4>Quiz selesai!</h4>
+          <p>Skor akhir kamu: <b>${quizScore} / ${quizQuestions.length}</b></p>
+          <a href="index.html" class="btn brand" style="margin-top:1em;">Kembali ke Beranda</a>`;
+      }
+    };
+
+    showQuizQuestion();
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
