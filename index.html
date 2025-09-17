@@ -7,23 +7,25 @@
   <link rel="shortcut icon" href="logo-removebg-preview.png" type="image/x-icon">
   <link rel="stylesheet" href="styles.css" />
   <meta name="description" content="BAEUDA: website belajar interaktif untuk Gen Z & Gen Alpha dengan gamifikasi, tantangan, dan konten singkat.">
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
 </head>
-<header class="header">
-  <div class="container nav">
-    <div class="brand">
-      <img src="logo.png" alt="Logo BAEUDA" class="logo" />
-      <h1>BAEUDA</h1>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <img src="logo.png" alt="Logo BAEUDA" class="logo" />
+        <h1>BAEUDA</h1>
+      </div>
+      <nav class="navlinks">
+        <a href="index.html" class="hide-m">Home</a>
+        <a href="#fitur" class="hide-m">Fitur</a>
+        <a href="#leaderboard" class="hide-m">Leaderboard</a>
+        <a class="btn ghost" href="login.html">Log In</a>
+        <a class="btn brand" href="register.html">Daftar</a>
+      </nav>
     </div>
-    <nav class="navlinks">
-      <a href="index.html" class="hide-m">Home</a>
-      <a href="#fitur" class="hide-m">Fitur</a>
-      <a href="#leaderboard" class="hide-m">Leaderboard</a>
-      <a class="btn ghost" href="login.html">Log In</a>
-      <a class="btn brand" href="register.html">Daftar</a>
-    </nav>
-  </div>
-</header>
-
+  </header>
 
   <main class="container hero">
     <section class="grid2">
@@ -72,41 +74,62 @@
       </div>
     </section>
 
-    <section id="leaderboard" class="leaderboard">
-      <div class="card">
-        <div class="badge">Leaderboard Mingguan (contoh)</div>
-        <table class="table" role="table" aria-label="Leaderboard">
-          <tbody>
-            <tr>
-              <td class="rank">#1</td>
-              <td class="name"><span>🟣</span> Fylbert Owen Marckwardt Widjaja</td>
-              <td>Matematika — 1.240 XP</td>
-            </tr>
-            <tr>
-              <td class="rank">#2</td>
-              <td class="name"><span>🔵</span> Dafa</td>
-              <td>Bahasa Inggris — 1.120 XP</td>
-            </tr>
-            <tr>
-              <td class="rank">#3</td>
-              <td class="name"><span>🟢</span> Naya</td>
-              <td>IPA — 980 XP</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="actions">
-          <a class="btn brand" href="register.html">Ikut Tantangan</a>
-          <a class="btn" href="login.html">Lihat kelas saya</a>
-        </div>
-      </div>
+    <section class="daily-challenge card" style="margin:2em 0;">
+      <div class="badge">Misi Harian</div>
+      <h3>🎯 Tantangan Hari Ini</h3>
+      <ul id="challenge-list">
+        <!-- Tantangan akan muncul di sini -->
+      </ul>
+      <button class="btn brand" id="challenge-done">Tandai Selesai</button>
     </section>
-  </main>
+
+    <a class="btn brand" href="quiz.html" target="_blank" style="margin:1em 0;display:inline-block;">
+      Mainkan Quiz Fisika (Full Screen)
+    </a>
 
   <footer class="footer">
     <div class="container">© <span id="y"></span> BAEUDA — Bahasa dan Edukasi Digital Anak Muda</div>
   </footer>
 
   <script src="app.js"></script>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <script>
+    const challenges = [
+      "Selesaikan 1 quiz Matematika",
+      "Baca 1 artikel Bahasa Inggris",
+      "Diskusi di forum minimal 1 kali",
+      "Tulis ringkasan pelajaran hari ini",
+      "Coba fitur AI Helper untuk soal sulit",
+      "Ikuti leaderboard mingguan",
+      "Bagikan tips belajar di forum",
+      "Pelajari 5 kosakata baru",
+      "Tonton video edukasi singkat",
+      "Kerjakan latihan IPA"
+    ];
+
+    // Fungsi untuk memilih 3 tantangan acak setiap hari
+    function pickChallenges(arr, n) {
+      const shuffled = arr.sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, n);
+    }
+
+    function renderChallenges() {
+      const list = document.getElementById('challenge-list');
+      list.innerHTML = '';
+      const todayChallenges = pickChallenges(challenges, 3);
+      todayChallenges.forEach(text => {
+        const li = document.createElement('li');
+        li.textContent = text;
+        list.appendChild(li);
+      });
+    }
+
+    renderChallenges();
+
+    document.getElementById('challenge-done').onclick = function() {
+      alert('Selamat! Misi harian selesai.');
+    };
+
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
